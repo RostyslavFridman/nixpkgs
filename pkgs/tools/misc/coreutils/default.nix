@@ -35,6 +35,8 @@ stdenv.mkDerivation rec {
     sed '2i echo Skipping cp sparse test && exit 77' -i ./tests/cp/sparse.sh
     sed '2i echo Skipping rm deep-2 test && exit 77' -i ./tests/rm/deep-2.sh
     sed '2i echo Skipping du long-from-unreadable test && exit 77' -i ./tests/du/long-from-unreadable.sh
+    # this test fail on overlay2fs during docker build
+    sed '2i echo Skipping inotify dir-recreate test && exit 77' -i ./tests/tail-2/inotify-dir-recreate.sh
 
     # sandbox does not allow setgid
     sed '2i echo Skipping chmod setgid test && exit 77' -i ./tests/chmod/setgid.sh
